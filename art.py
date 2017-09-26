@@ -2,8 +2,7 @@ import imageio
 from PIL import Image, ImageDraw, ImageFont
 
 from cube_constants import (SIDES, ORIGINAL_IMAGE, GRAFFITIED_IMAGE,
-							SIDES_ON_A_CUBE, SQUARES_IN_A_ROW,
-							SQUARES_IN_A_COLUMN)
+	SIDES_ON_A_CUBE, SQUARES_IN_A_ROW, SQUARES_IN_A_COLUMN)
 
 def draw(mycube):
 	"""Paints over the original cube image with a cube configuration."""

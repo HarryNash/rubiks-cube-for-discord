@@ -51,7 +51,6 @@ def connect_to_database():
 	except:
 		print('I am unable to connect to the database')
 
-
 def commit_and_close_database(conn, cur):
 	"""Finalize changes and close the connection to the cube database."""
 	conn.commit()

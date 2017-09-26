@@ -3,7 +3,7 @@ import discord, asyncio
 from secret import discord_token
 from commands import hands, jumble, solve, custom, text
 from cube_constants import (HANDS_OP, JUMBLE_OP, SOLVE_OP, CUSTOM_OP, TEXT_OP,
-							HELP_OP, GRAFFITIED_IMAGE, HELP_TEXT)
+	HELP_OP, GRAFFITIED_IMAGE, HELP_TEXT)
 
 client = discord.Client()
 lock = asyncio.Lock()

@@ -6,16 +6,16 @@ from art import draw
 from db import delete_cube, append_movements_to_cube
 from markup import embolden, italicize
 from cube_constants import (ALL_MOVES, ALL_MOVES_BOLD, SIDES, SQUARES_ON_A_CUBE,
-							COLOUR_CODES, COLOUR_DECODE, SIDES_ON_A_CUBE,
-							SQUARES_IN_A_ROW, SQUARES_IN_A_COLUMN)
+	COLOUR_CODES, COLOUR_DECODE, SIDES_ON_A_CUBE, SQUARES_IN_A_ROW,
+	SQUARES_IN_A_COLUMN)
 
 def hands_validate(movements):
 	"""Checks that a list contains only valid movements."""
 	if (len(movements) == 0):
 		return True, None
 	elif (not movements[0] in ALL_MOVES):
-		return False, (embolden(movements[0]) + ' is not a valid movement. ' + 
-		'Please use a move from this list: ' + ALL_MOVES_BOLD)
+		return False, (embolden(movements[0]) + ' is not a valid movement. '
+			'Please use a move from this list: ' + ALL_MOVES_BOLD)
 	else:
 		return hands_validate(movements[1:])
 
@@ -39,11 +39,11 @@ def custom(channel_id, letters):
 	"""	Verifies and configures a cube with a sequence of characters."""
 	if (len(letters) != SQUARES_ON_A_CUBE):
 		return ('You must provide ' + str(SQUARES_ON_A_CUBE) +
-		' colour characters but you have given ' + str(len(letters)) + '.')
+			' colour characters but you have given ' + str(len(letters)) + '.')
 	for x in range(0, SQUARES_ON_A_CUBE):
 		if (not letters[x] in COLOUR_CODES):
-			return (embolden(letters[x]) + ' is not a valid colour code. ' +
-			'Please only use codes from this list: ' + str(list(COLOUR_CODES)))
+			return (embolden(letters[x]) + ' is not a valid colour code. '
+				'Please only use codes from this list: ' + str(COLOUR_CODES))
 	colours = list(map((lambda x: COLOUR_DECODE[x]), letters))
 	mycube = pc.Cube(pc.array_to_cubies(colours))
 	solver = CFOPSolver(mycube)

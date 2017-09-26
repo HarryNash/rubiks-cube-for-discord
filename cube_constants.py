@@ -30,9 +30,9 @@ GRAFFITIED_IMAGE = 'idle_graffitied.jpg'
 
 HANDS_HELP = ('performs the moves affixed to it, e.g. ' +
 			  italicize(HANDS_OP + ' R F2 x R\'') +
-			  ' will rotate the right face 90° clockwise,' +
-			  ' rotate the front face 180° clockwise,' +
-			  ' revolve the cube on it\'s x axis 90°' +
+			  ' will rotate the right face 90° clockwise,'
+			  ' rotate the front face 180° clockwise,'
+			  ' revolve the cube on it\'s x axis 90°'
 			  ' then rotate the right face 90° counterclockwise.')
 JUMBLE_HELP = 'jumbles the cube.'
 SOLVE_HELP = 'solves the cube.'
@@ -48,13 +48,13 @@ for x, y in COMMAND_PAIRS:
 	COMMANDS_INFO += embolden(x) + ' ' + y + '\n'
 
 MOVES_INFO  = ('Here is the list of all available moves: ' +
-			   ALL_MOVES_BOLD + '. For more information about the ' +
-			   'standard rubik\'s cube notation, follow this link: ' +
+			   ALL_MOVES_BOLD + '. For more information about the '
+			   'standard rubik\'s cube notation, follow this link: '
 			   '<https://ruwix.com/the-rubiks-cube/notation/>')
 
 EXAMPLE_CONFIG = 'rrrbbbrrryyyyyyyyygggrrrgggwwwwwwwwwooogggooobbbooobbb'
-CONFIG_INFO = ('An example of a valid custom configuration would be ' + 
-			   italicize(EXAMPLE_CONFIG) + ' which defines a cube after an ' +
+CONFIG_INFO = ('An example of a valid custom configuration would be ' +
+			   italicize(EXAMPLE_CONFIG) + ' which defines a cube after an '
 			   'equator slice.')
 
 HELP_TEXT = COMMANDS_INFO + '\n' + MOVES_INFO + '\n\n' + CONFIG_INFO
