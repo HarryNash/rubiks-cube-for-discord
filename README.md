@@ -9,17 +9,30 @@
   - `!custom` configures the cube with a valid string of 54 colour characters.
 
 ### Preview
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![N|Solid](http://i.imgur.com/xoSvkb7.gif)]()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Imgur Image](https://i.imgur.com/xoSvkb7.gif)
 
 ### Try for yourself
-  - [Test Server Invite](https://discord.gg/XbCaFr6)👨‍🔬
+  - [Test Server Invite](https://discord.gg/XbCaFr6>)🔬
   - [Bot Invite](https://discordapp.com/oauth2/authorize?client_id=348589326206238730&scope=bot&permissions=0)🤖
 
 ### Setup
-- Input the SQL code to create the `cubes` table.
+- Run this PostgreSQL code to create the `cubes` table:
+    ```sh
+    CREATE TABLE public.cubes
+    (
+      channel_id text NOT NULL,
+      progress text,
+      CONSTRAINT cubes_pkey PRIMARY KEY (channel_id)
+    )
+    WITH (
+      OIDS=FALSE
+    );
+    ALTER TABLE public.cubes
+      OWNER TO postgres;
+    ```
 - Create a file called `secret.py` and fill it with the your own discord token and database credentials.
-    [![N|Solid](http://i.imgur.com/Q7ZSeTZ.png)]()
-- Run this code in the `rubiks-cube-for-discord` directory
+![Imgur Image](http://i.imgur.com/Q7ZSeTZ.png)
+- Run this code in the `rubiks-cube-for-discord` directory:
     ```sh
     $ sudo -H pip3 install -r requirements.txt
     $ python3 bot.py
