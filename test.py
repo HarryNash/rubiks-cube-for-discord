@@ -2,7 +2,8 @@ import unittest
 
 from commands import hands, custom, text, ALL_MOVES
 
-from db import create_cube_if_channel_has_none, delete_cube, append_movements_to_cube
+from db import (create_cube_if_channel_has_none, delete_cube,
+	append_movements_to_cube)
 
 TEST_CHANNEL_ID = '00'
 
