@@ -1,0 +1,5 @@
+imageio
+discord
+asyncio
+pycuber
+psycopg2
