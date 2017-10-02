@@ -12,7 +12,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![N|Solid](http://i.imgur.com/xoSvkb7.gif)]()
 
 ### Try for yourself
-  - [Test Server Invite](https://discord.gg/XbCaFr6>)👨‍🔬
+  - [Test Server Invite](https://discord.gg/XbCaFr6)👨‍🔬
   - [Bot Invite](https://discordapp.com/oauth2/authorize?client_id=348589326206238730&scope=bot&permissions=0)🤖
 
 ### Setup
