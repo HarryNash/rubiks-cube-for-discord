@@ -1,11 +1,9 @@
 import psycopg2
 
-from secret import dbname, dbuser, dbhost, dbpassword
 
-
-def create_cube_if_channel_has_none(channel_id):
+def create_cube_if_channel_has_none(channel_id, database_connection):
     """Creates a cube in the database if there isn't one already."""
-    conn, cur = connect_to_database()
+    conn, cur = connect_to_database(database_connection)
     cur.execute(
         """SELECT *
 				   FROM cubes
@@ -24,9 +22,9 @@ def create_cube_if_channel_has_none(channel_id):
     commit_and_close_database(conn, cur)
 
 
-def delete_cube(channel_id):
+def delete_cube(channel_id, database_connection):
     """Deletes a cube in the database."""
-    conn, cur = connect_to_database()
+    conn, cur = connect_to_database(database_connection)
     cur.execute(
         """DELETE FROM cubes
 				   WHERE channel_id = '{:s}'""".format(
@@ -36,10 +34,10 @@ def delete_cube(channel_id):
     commit_and_close_database(conn, cur)
 
 
-def append_movements_to_cube(channel_id, movements):
+def append_movements_to_cube(channel_id, movements, database_connection):
     """Add movements to a cube in the database and return the summation."""
-    create_cube_if_channel_has_none(channel_id)
-    conn, cur = connect_to_database()
+    create_cube_if_channel_has_none(channel_id, database_connection)
+    conn, cur = connect_to_database(database_connection)
     if movements != "":
         cur.execute(
             """UPDATE cubes
@@ -61,16 +59,10 @@ def append_movements_to_cube(channel_id, movements):
     return progress
 
 
-def connect_to_database():
+def connect_to_database(database_connection):
     """Connect to the cube database."""
     try:
-        db_credentials = (
-            "dbname='{:s}' "
-            "user='{:s}' "
-            "host='{:s}' "
-            "password='{:s}'".format(dbname, dbuser, dbhost, dbpassword)
-        )
-        conn = psycopg2.connect(db_credentials)
+        conn = psycopg2.connect(database_connection)
         return conn, conn.cursor()
     except:
         print("I am unable to connect to the database")

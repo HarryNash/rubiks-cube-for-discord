@@ -16,6 +16,8 @@ lock = asyncio.Lock()
 
 
 class MyClient(discord.Client):
+    database_connection: str
+
     async def on_ready(self):
         print("Logged on as", self.user)
 
@@ -28,11 +30,15 @@ class MyClient(discord.Client):
         elif message.content.startswith(JUMBLE_OP):
             jumble(message.channel.id)
         elif message.content.startswith(SOLVE_OP):
-            solve(message.channel.id)
+            solve(message.channel.id, self.database_connection)
         elif message.content.startswith(CUSTOM_OP):
-            txt = custom(message.channel.id, message.content[len(CUSTOM_OP + " ") :])
+            txt = custom(
+                message.channel.id,
+                message.content[len(CUSTOM_OP + " ") :],
+                self.database_connection,
+            )
         elif message.content.startswith(TEXT_OP):
-            txt = text(message.channel.id)
+            txt = text(message.channel.id, self.database_connection)
         elif message.content.startswith(HELP_OP):
             txt = HELP_TEXT
         else:

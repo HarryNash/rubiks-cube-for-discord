@@ -47,13 +47,13 @@ def jumble(channel_id):
     modify_and_draw_cube(channel_id, str(pc.Formula().random()))
 
 
-def solve(channel_id):
+def solve(channel_id, database_connection):
     """Solves a cube."""
-    delete_cube(channel_id)
+    delete_cube(channel_id, database_connection)
     draw(pc.Cube())
 
 
-def custom(channel_id, letters):
+def custom(channel_id, letters, database_connection):
     """	Verifies and configures a cube with a sequence of characters."""
     if len(letters) != SQUARES_ON_A_CUBE:
         return (
@@ -78,13 +78,13 @@ def custom(channel_id, letters):
     except ValueError:
         return "You have input an impossible cube configuration."
     state = str(solution.reverse())
-    delete_cube(channel_id)
+    delete_cube(channel_id, database_connection)
     modify_and_draw_cube(channel_id, state)
 
 
-def text(channel_id):
+def text(channel_id, database_connection):
     """Returns the configuration of a cube in text form."""
-    progress = append_movements_to_cube(channel_id, "")
+    progress = append_movements_to_cube(channel_id, "", database_connection)
     mycube = pc.Cube()
     mycube(progress)
     txt = ""
