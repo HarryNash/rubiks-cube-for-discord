@@ -1,5 +1,8 @@
 # Rubik's Cube for Discord
 
+### Try it Out
+https://discord.gg/XbCaFr6
+
 ### Commands
   - `!rubik` lists the available commands.
   - `!hands` performs the moves affixed to it, e.g. `!hands R F2 x R'` will rotate the right face 90° clockwise, rotate the front face 180° clockwise, revolve the cube on it's x axis 90° then rotate the right face 90° counterclockwise.
