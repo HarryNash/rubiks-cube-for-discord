@@ -77,4 +77,11 @@ CONFIG_INFO = (
     "equator slice."
 )
 
-HELP_TEXT = COMMANDS_INFO + "\n" + MOVES_INFO + "\n\n" + CONFIG_INFO
+HELP_TEXT = (
+    "https://github.com/HarryNash/rubiks-cube-for-discord\n\n"
+    + COMMANDS_INFO
+    + "\n"
+    + MOVES_INFO
+    + "\n\n"
+    + CONFIG_INFO
+)
