@@ -1,5 +1,5 @@
 imageio
-discord
+discord.py
 asyncio
 pycuber
 psycopg2-binary
