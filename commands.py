@@ -34,17 +34,17 @@ def hands_validate(movements):
         return hands_validate(movements[1:])
 
 
-def hands(channel_id, movements):
+def hands(channel_id, movements, database_connection):
     """Performs a valid sequence of movements on a cube."""
     valid, report = hands_validate(movements.split())
     if not valid:
         return report
-    modify_and_draw_cube(channel_id, movements)
+    modify_and_draw_cube(channel_id, movements, database_connection)
 
 
-def jumble(channel_id):
+def jumble(channel_id, database_connection):
     """Jumbles a cube."""
-    modify_and_draw_cube(channel_id, str(pc.Formula().random()))
+    modify_and_draw_cube(channel_id, str(pc.Formula().random()), database_connection)
 
 
 def solve(channel_id, database_connection):
@@ -79,7 +79,7 @@ def custom(channel_id, letters, database_connection):
         return "You have input an impossible cube configuration."
     state = str(solution.reverse())
     delete_cube(channel_id, database_connection)
-    modify_and_draw_cube(channel_id, state)
+    modify_and_draw_cube(channel_id, state, database_connection)
 
 
 def text(channel_id, database_connection):
@@ -95,9 +95,9 @@ def text(channel_id, database_connection):
     return txt
 
 
-def modify_and_draw_cube(channel_id, movements):
+def modify_and_draw_cube(channel_id, movements, database_connection):
     """Modifies the state of a cube, creates a cube if none pre-exists."""
-    progress = append_movements_to_cube(channel_id, movements)
+    progress = append_movements_to_cube(channel_id, movements, database_connection)
     mycube = pc.Cube()
     mycube(progress)
     draw(mycube)

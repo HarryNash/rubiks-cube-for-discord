@@ -26,9 +26,13 @@ class MyClient(discord.Client):
         txt = None
         await lock.acquire()
         if message.content.startswith(HANDS_OP):
-            txt = hands(message.channel.id, message.content[len(HANDS_OP + " ") :])
+            txt = hands(
+                message.channel.id,
+                message.content[len(HANDS_OP + " ") :],
+                self.database_connection,
+            )
         elif message.content.startswith(JUMBLE_OP):
-            jumble(message.channel.id)
+            jumble(message.channel.id, self.database_connection)
         elif message.content.startswith(SOLVE_OP):
             solve(message.channel.id, self.database_connection)
         elif message.content.startswith(CUSTOM_OP):
