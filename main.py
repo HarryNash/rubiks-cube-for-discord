@@ -50,9 +50,7 @@ class MyClient(discord.Client):
             return
 
         if txt == None:
-            await message.channel.send_file(
-                "cube.png", filename=GRAFFITIED_IMAGE, content="cube"
-            )
+            await message.channel.send(file=discord.File("cube.png", GRAFFITIED_IMAGE))
         else:
             await message.channel.send(txt)
         lock.release()
