@@ -25,6 +25,7 @@ def draw(mycube):
                     colour = mycube.get_face(SIDES[i])[j][k].colour
                     d.polygon(polygons[i][j][k], colour, None)
         out = Image.alpha_composite(base, overlay)
+        out = out.convert("RGB")
         out.save(GRAFFITIED_IMAGE)
 
 
