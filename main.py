@@ -1,4 +1,4 @@
-import discord, asyncio
+import discord, asyncio, argparse
 from commands import hands, jumble, solve, custom, text
 from cube_constants import (
     HANDS_OP,
@@ -49,6 +49,14 @@ class MyClient(discord.Client):
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("token", type=str, help="bot authentication token")
+    parser.add_argument(
+        "database_connection",
+        type=str,
+        help="'dbname=A user=B host=C port=D password=E'",
+    )
+    args = parser.parse_args()
     client = MyClient()
-
-    client.run("a")
+    client.database_connection = args.database_connection
+    client.run(args.token)
