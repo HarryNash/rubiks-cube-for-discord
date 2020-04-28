@@ -12,20 +12,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Imgur Image](https://i.imgur.com/xoSvkb7.gif)
 
 ### Setup
-- Run this PostgreSQL code to create the `cubes` table:
-    ```sh
-    CREATE TABLE public.cubes
-    (
-      channel_id text NOT NULL,
-      progress text,
-      CONSTRAINT cubes_pkey PRIMARY KEY (channel_id)
-    )
-    WITH (
-      OIDS=FALSE
-    );
-    ALTER TABLE public.cubes
-      OWNER TO postgres;
-    ```
+- Run `schema.sql`.
 - Create a file called `secret.py` and fill it with the your own discord token and database credentials.
 ![Imgur Image](http://i.imgur.com/Q7ZSeTZ.png)
 - Run this code in the `rubiks-cube-for-discord` directory:
