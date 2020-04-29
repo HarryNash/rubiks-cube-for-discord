@@ -1,7 +1,10 @@
 # Rubik's Cube for Discord
 
-### Try it Out
+### Try It out in My Server
 https://discord.gg/XbCaFr6
+
+### Add It to Your Server
+https://discordapp.com/api/oauth2/authorize?client_id=348589326206238730&permissions=3072&scope=bot
 
 ### Commands
   - `!rubik` lists the available commands.
