@@ -1,4 +1,6 @@
 import imageio
+from autologging import traced
+import logging
 from PIL import Image, ImageDraw, ImageFont
 
 from cube_constants import (
@@ -11,6 +13,7 @@ from cube_constants import (
 )
 
 
+@traced(logging.getLogger("harry"))
 def draw(mycube):
     """Paints over the original cube image with a cube configuration."""
     with open(ORIGINAL_IMAGE, "rb") as base_handle:

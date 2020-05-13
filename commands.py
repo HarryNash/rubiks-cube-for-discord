@@ -1,6 +1,8 @@
 import pycuber as pc
 from pycuber.solver import CFOPSolver
 from functools import reduce
+from autologging import traced
+import logging
 
 from art import draw
 from db import delete_cube, append_movements_to_cube
@@ -18,6 +20,7 @@ from cube_constants import (
 )
 
 
+@traced(logging.getLogger("harry"))
 def hands_validate(movements):
     """Checks that a list contains only valid movements."""
     if len(movements) == 0:
@@ -34,6 +37,7 @@ def hands_validate(movements):
         return hands_validate(movements[1:])
 
 
+@traced(logging.getLogger("harry"))
 def hands(channel_id, movements, database_connection):
     """Performs a valid sequence of movements on a cube."""
     valid, report = hands_validate(movements.split())
@@ -42,17 +46,20 @@ def hands(channel_id, movements, database_connection):
     modify_and_draw_cube(channel_id, movements, database_connection)
 
 
+@traced(logging.getLogger("harry"))
 def jumble(channel_id, database_connection):
     """Jumbles a cube."""
     modify_and_draw_cube(channel_id, str(pc.Formula().random()), database_connection)
 
 
+@traced(logging.getLogger("harry"))
 def solve(channel_id, database_connection):
     """Solves a cube."""
     delete_cube(channel_id, database_connection)
     draw(pc.Cube())
 
 
+@traced(logging.getLogger("harry"))
 def custom(channel_id, letters, database_connection):
     """	Verifies and configures a cube with a sequence of characters."""
     if len(letters) != SQUARES_ON_A_CUBE:
@@ -82,6 +89,7 @@ def custom(channel_id, letters, database_connection):
     modify_and_draw_cube(channel_id, state, database_connection)
 
 
+@traced(logging.getLogger("harry"))
 def text(channel_id, database_connection):
     """Returns the configuration of a cube in text form."""
     progress = append_movements_to_cube(channel_id, "", database_connection)
@@ -95,6 +103,7 @@ def text(channel_id, database_connection):
     return txt
 
 
+@traced(logging.getLogger("harry"))
 def modify_and_draw_cube(channel_id, movements, database_connection):
     """Modifies the state of a cube, creates a cube if none pre-exists."""
     progress = append_movements_to_cube(channel_id, movements, database_connection)

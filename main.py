@@ -1,4 +1,7 @@
 import discord, asyncio, argparse
+import sys
+import logging
+from autologging import TRACE
 from commands import hands, jumble, solve, custom, text
 from cube_constants import (
     HANDS_OP,
@@ -64,6 +67,15 @@ if __name__ == "__main__":
         type=str,
         help="'dbname=A user=B host=C port=D password=E'",
     )
+    harry_logger = logging.getLogger("harry")
+    harry_logger.setLevel(TRACE)
+
+    handler = logging.StreamHandler(sys.stdout)
+    handler.setLevel(TRACE)
+    formatter = logging.Formatter("%(levelname)s:%(name)s:%(funcName)s:%(message)s")
+    handler.setFormatter(formatter)
+    harry_logger.addHandler(handler)
+
     args = parser.parse_args()
     client = MyClient()
     client.database_connection = args.database_connection

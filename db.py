@@ -1,6 +1,9 @@
 import psycopg2
+from autologging import traced
+import logging
 
 
+@traced(logging.getLogger("harry"))
 def create_cube_if_channel_has_none(channel_id, database_connection):
     """Creates a cube in the database if there isn't one already."""
     conn, cur = connect_to_database(database_connection)
@@ -13,6 +16,7 @@ def create_cube_if_channel_has_none(channel_id, database_connection):
     commit_and_close_database(conn, cur)
 
 
+@traced(logging.getLogger("harry"))
 def delete_cube(channel_id, database_connection):
     """Deletes a cube in the database."""
     conn, cur = connect_to_database(database_connection)
@@ -20,6 +24,7 @@ def delete_cube(channel_id, database_connection):
     commit_and_close_database(conn, cur)
 
 
+@traced(logging.getLogger("harry"))
 def append_movements_to_cube(channel_id, movements, database_connection):
     """Add movements to a cube in the database and return the summation."""
     create_cube_if_channel_has_none(channel_id, database_connection)
@@ -36,12 +41,14 @@ def append_movements_to_cube(channel_id, movements, database_connection):
     return progress
 
 
+@traced(logging.getLogger("harry"))
 def connect_to_database(database_connection):
     """Connect to the cube database."""
     conn = psycopg2.connect(database_connection)
     return conn, conn.cursor()
 
 
+@traced(logging.getLogger("harry"))
 def commit_and_close_database(conn, cur):
     """Finalize changes and close the connection to the cube database."""
     conn.commit()
